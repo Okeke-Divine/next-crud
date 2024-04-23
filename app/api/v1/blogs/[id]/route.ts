@@ -24,6 +24,13 @@ export const PUT = async (req: Request, res: Response) => {
   }
 };
 
+export const PATCH = async (req: Request, res: Response) => {
+  try {
+  } catch (err) {
+    return NextResponse.json({ message: "Error", err }, { status: 500 });
+  }
+};
+
 export const DELETE = async (req: Request, res: Response) => {
   try {
     const id = req.url.split("blogs/")[1];
