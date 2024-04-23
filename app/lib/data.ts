@@ -12,7 +12,7 @@ let posts: POST[] = [];
 //handlers
 export const getPosts = () => posts;
 
-export const addPosts = (post:Post) => {
+export const addPosts = (post:POST) => {
     posts.push(post);
 };
 
