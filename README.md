@@ -1,6 +1,6 @@
 # Next.js CRUD
 
-##
+## A Next.js CRUD post application that uses an custom built in-memory database to store data.
 
 ### Default Data -> data.ts
 '''
