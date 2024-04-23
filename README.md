@@ -1,6 +1,14 @@
 # Next.js CRUD
 
-## A Next.js CRUD post application that uses an custom built in-memory database to store data.
+## A Next.js CRUD post api that uses an custom built in-memory database to store data.
+
+## Routes:
+- /api/v1/blogs (GET)
+- /api/v1/blogs (PUT)
+- /api/v1/blogs/[id] (GET)
+- /api/v1/blogs/[id] (PUT)
+- /api/v1/blogs/[id] (PATCH)
+- /api/v1/blogs/[id] (DELETE)
 
 ### Default Data -> data.ts
 ```
