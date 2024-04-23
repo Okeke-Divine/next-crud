@@ -1,4 +1,4 @@
-import { getById, updatePosts } from "@/app/lib/data";
+import { deletePosts, getById, updatePosts } from "@/app/lib/data";
 import { NextResponse } from "next/server";
 
 export const GET = async (req: Request, res: Response) => {
@@ -25,6 +25,11 @@ export const PUT = async (req: Request, res: Response) => {
 };
 
 export const DELETE = async (req: Request, res: Response) => {
-  const id = req.url.split("blogs/")[1];
-  console.log(id);
+  try {
+    const id = req.url.split("blogs/")[1];
+    deletePosts(id);
+    return NextResponse.json({ message: "ok" }, { status: 200 });
+  } catch (err) {
+    return NextResponse.json({ message: "Error", err }, { status: 500 });
+  }
 };

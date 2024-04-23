@@ -16,7 +16,7 @@ export const POST = async (req: Request, res: Response) => {
     const post = { title, desc, date: new Date(), id: Date.now().toString() };
     addPosts(post);
     return NextResponse.json({ message: "ok", post }, { status: 201 });
-} catch (err) {
+  } catch (err) {
     return NextResponse.json({ message: "Error", err }, { status: 500 });
   }
 };
