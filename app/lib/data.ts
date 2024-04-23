@@ -6,7 +6,8 @@ type POST = {
   date: Date;
 };
 
-// store
+// store 
+// post with default content
 let posts: POST[] = [
   {
     id: "1713893708281",
