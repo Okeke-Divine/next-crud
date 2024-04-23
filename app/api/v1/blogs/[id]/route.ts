@@ -1,4 +1,4 @@
-import { deletePosts, getById, updatePosts } from "@/app/lib/data";
+import { deletePosts, getById, updatePosts, updatePostsByPatch } from "@/app/lib/data";
 import { NextResponse } from "next/server";
 
 export const GET = async (req: Request, res: Response) => {
@@ -26,6 +26,15 @@ export const PUT = async (req: Request, res: Response) => {
 
 export const PATCH = async (req: Request, res: Response) => {
   try {
+    const id = req.url.split("blogs/")[1];
+    const updatedFields = await req.json();
+
+    if(Object.keys(updatedFields).length === 0){
+        return NextResponse.json({message: "No fields to update"}, {status: 400});
+    }
+
+    updatePostsByPatch(id, updatedFields);
+    return NextResponse.json({message: "The post has been updated successfully"}, {status: 200});
   } catch (err) {
     return NextResponse.json({ message: "Error", err }, { status: 500 });
   }
