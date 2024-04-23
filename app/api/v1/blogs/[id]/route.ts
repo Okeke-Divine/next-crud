@@ -25,20 +25,22 @@ export const PUT = async (req: Request, res: Response) => {
 };
 
 export const PATCH = async (req: Request, res: Response) => {
-  try {
-    const id = req.url.split("blogs/")[1];
-    const updatedFields = await req.json();
-
-    if(Object.keys(updatedFields).length === 0){
-        return NextResponse.json({message: "No fields to update"}, {status: 400});
+    try {
+      const id = req.url.split("blogs/")[1];
+      const updatedFields = await req.json(); // Receive the updated fields from the request body
+  
+      // Check if there are any fields to update
+      if (Object.keys(updatedFields).length === 0) {
+        return NextResponse.json({ message: "No fields to update" }, { status: 400 });
+      }
+  
+      updatePostsByPatch(id, updatedFields); // Call updatePostsByPatch function with the ID and updated fields
+      return NextResponse.json({ message: "Post updated successfully" }, { status: 200 });
+    } catch (err) {
+      return NextResponse.json({ message: "Error", err }, { status: 500 });
     }
-
-    updatePostsByPatch(id, updatedFields);
-    return NextResponse.json({message: "The post has been updated successfully"}, {status: 200});
-  } catch (err) {
-    return NextResponse.json({ message: "Error", err }, { status: 500 });
-  }
-};
+  };  
+  
 
 export const DELETE = async (req: Request, res: Response) => {
   try {
