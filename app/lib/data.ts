@@ -6,7 +6,7 @@ type POST = {
   date: Date;
 };
 
-// store 
+// store
 // post with default content
 let posts: POST[] = [
   {
@@ -33,6 +33,18 @@ export const updatePosts = (id: string, title: string, desc: string) => {
   if (post) {
     post.title = title;
     post.desc = desc;
+  } else {
+    throw new Error("NO POST FOUND");
+  }
+};
+
+export const updatePostsByPatch = (
+  id: string,
+  updatedFields: Partial<POST>
+) => {
+  const postIndex = posts.findIndex((post) => post.id === id);
+  if (postIndex !== -1) {
+    posts[postIndex] = { ...posts[postIndex], ...updatedFields };
   } else {
     throw new Error("NO POST FOUND");
   }
